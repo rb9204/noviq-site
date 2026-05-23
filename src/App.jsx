@@ -408,6 +408,46 @@ export default function App() {
         </motion.div>
       </section>
 
+      {/* SUBMIT POPUP */}
+      <AnimatePresence>
+        {submitted && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] bg-black/40 flex items-center justify-center px-6"
+          >
+            <motion.div
+              initial={{ y: 20, scale: 0.97, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              exit={{ y: 20, scale: 0.97, opacity: 0 }}
+              className="bg-white rounded-2xl max-w-md w-full p-8 text-center shadow-xl"
+            >
+              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mx-auto">
+                <Check className="text-green-600" size={32} />
+              </div>
+
+              <h3 className="mt-6 text-2xl font-semibold">
+                Thanks — we received your inquiry
+              </h3>
+
+              <p className="mt-3 text-black/60">
+                We'll get back to you soon. Expect a reply within 24-48 hours.
+              </p>
+
+              <div className="mt-6">
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="px-6 py-3 bg-black text-white rounded-full"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* SERVICES */}
       <section
         id="services"
